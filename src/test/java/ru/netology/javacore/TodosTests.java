@@ -1,6 +1,32 @@
 package ru.netology.javacore;
 
-public class TodosTests {
+import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
 
-    // ваши тесты для класса Todos
+
+public class TodosTests {
+    @Test
+    public void testAdd() {
+        Todos todos = new Todos();
+        todos.addTask("Пробежка");
+        Assertions.assertEquals(todos.getAllTasks(), "Пробежка ");
+    }
+
+    @Test
+    public void testRemove() {
+        Todos todos = new Todos();
+        todos.addTask("Учеба");
+        todos.removeTask("Учеба");
+        Assertions.assertEquals(todos.getAllTasks(), "");
+    }
+
+    @Test
+    public void testGetAll() {
+        Todos todos = new Todos();
+        todos.addTask("Пробежка");
+        todos.addTask("Акробатика");
+        todos.addTask("Учеба");
+        todos.removeTask("Акробатика");
+        Assertions.assertEquals(todos.getAllTasks(), "Пробежка Учеба ");
+    }
 }
